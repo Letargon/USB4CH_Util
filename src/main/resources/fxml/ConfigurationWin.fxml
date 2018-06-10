@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="407.0" prefWidth="473.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="com.iu3.usb4ch_util.ConfigController">
+   <children>
+      <TabPane prefHeight="402.0" prefWidth="478.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Blast">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="478.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="77.0" text="SampleRate" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="62.0" />
+                        <Label layoutX="41.0" layoutY="115.0" text="PakFileSize" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="97.0" />
+                        <Label layoutX="41.0" layoutY="150.0" text="MaxPackets" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="132.0" />
+                        <Label layoutX="41.0" layoutY="187.0" text="GpsName" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="167.0" />
+                        <Label layoutX="41.0" layoutY="273.0" text="LedOnDigOut" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="237.0" />
+                        <Label layoutX="41.0" layoutY="312.0" text="MsgCount" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="272.0" />
+                        <Label layoutX="41.0" layoutY="230.0" text="UserConfigByte" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="202.0" />
+                        <Label layoutX="41.0" layoutY="45.0" text="DriverName" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="27.0" />
+                        <TextField layoutX="111.0" layoutY="23.0" AnchorPane.leftAnchor="166.0" />
+                        <ChoiceBox layoutX="111.0" layoutY="58.0" prefWidth="150.0" AnchorPane.leftAnchor="166.0" />
+                        <ChoiceBox layoutX="166.0" layoutY="93.0" prefWidth="150.0" />
+                        <TextField layoutX="165.0" layoutY="128.0" />
+                        <ChoiceBox layoutX="164.0" layoutY="163.0" prefWidth="150.0" />
+                        <TextField layoutX="165.0" layoutY="198.0" />
+                        <TextField layoutX="165.0" layoutY="233.0" />
+                        <TextField layoutX="165.0" layoutY="268.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Bin2Asc">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="232.0">
+                     <children>
+                        <Label layoutX="29.0" layoutY="27.0" text="DataFileMode" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="27.0" />
+                        <Label layoutX="29.0" layoutY="63.0" text="OutputFormat" AnchorPane.topAnchor="62.0" />
+                        <Label layoutX="29.0" layoutY="99.0" text="OutputPrefix" AnchorPane.topAnchor="97.0" />
+                        <Label layoutX="29.0" layoutY="134.0" text="OutputExt" AnchorPane.topAnchor="132.0" />
+                        <Label layoutX="29.0" layoutY="170.0" text="MaxLines" AnchorPane.topAnchor="167.0" />
+                        <Label layoutX="29.0" layoutY="205.0" text="MsgCount" AnchorPane.topAnchor="202.0" />
+                        <TabPane layoutY="246.0" prefHeight="127.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <tabs>
+                            <Tab text="1 Chanell">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Title" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Places" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Digits" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="2 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Title" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Places" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Digits" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                            </Tab>
+                              <Tab text="3 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Title" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Places" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Digits" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="4 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Title" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Places" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Digits" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                        <ChoiceBox layoutX="132.0" layoutY="23.0" prefWidth="150.0" AnchorPane.leftAnchor="166.0" />
+                        <ChoiceBox layoutX="164.0" layoutY="58.0" prefWidth="150.0" />
+                        <TextField layoutX="165.0" layoutY="93.0" />
+                        <TextField layoutX="165.0" layoutY="128.0" />
+                        <TextField layoutX="165.0" layoutY="163.0" />
+                        <TextField layoutX="165.0" layoutY="198.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="ScopeDisplay">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="232.0">
+                     <children>
+                        <Label layoutX="29.0" layoutY="27.0" text="Color" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="375.0" AnchorPane.topAnchor="27.0" />
+                        <Label layoutX="29.0" layoutY="63.0" text="Nbits" AnchorPane.topAnchor="62.0" />
+                        <Label layoutX="29.0" layoutY="99.0" text="AutoDC" AnchorPane.topAnchor="97.0" />
+                        <Label layoutX="29.0" layoutY="134.0" text="Clipping" AnchorPane.topAnchor="132.0" />
+                        <Label layoutX="29.0" layoutY="170.0" text="FirstSample" AnchorPane.topAnchor="167.0" />
+                        <Label layoutX="29.0" layoutY="205.0" text="FirstTrace" AnchorPane.topAnchor="202.0" />
+                        <Label layoutX="29.0" layoutY="232.0" text="Ndisplay" AnchorPane.topAnchor="237.0" />
+                        <ChoiceBox layoutX="16.0" layoutY="276.0" prefWidth="150.0" />
+                        <TextField layoutX="239.0" layoutY="276.0" prefHeight="25.0" prefWidth="128.0" />
+                        <CheckBox layoutX="390.0" layoutY="280.0" mnemonicParsing="false" text="On" />
+                        <Label layoutX="200.0" layoutY="280.0" text="Title" />
+                        <ChoiceBox layoutX="125.0" layoutY="23.0" prefWidth="150.0" AnchorPane.leftAnchor="166.0" />
+                        <TextField layoutX="165.0" layoutY="58.0" />
+                        <TextField layoutX="165.0" layoutY="163.0" />
+                        <TextField layoutX="165.0" layoutY="198.0" />
+                        <TextField layoutX="165.0" layoutY="233.0" />
+                        <ChoiceBox layoutX="164.0" layoutY="93.0" prefWidth="150.0" />
+                        <ChoiceBox layoutX="164.0" layoutY="128.0" prefWidth="150.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Interp">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="92.0" layoutY="50.0" text="OutputRate" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="27.0" />
+                        <Label layoutX="92.0" layoutY="104.0" text="MsgCount" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="62.0" />
+                        <TextField layoutX="123.0" layoutY="23.0" AnchorPane.leftAnchor="166.0" />
+                        <TextField layoutX="166.0" layoutY="58.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Pak2Bin">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="478.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="77.0" text="OutputStatusFile" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="62.0" />
+                        <Label layoutX="41.0" layoutY="115.0" text="OutputNmeaFile" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="97.0" />
+                        <Label layoutX="41.0" layoutY="150.0" text="OutputEquipFile" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="132.0" />
+                        <Label layoutX="41.0" layoutY="187.0" text="Verbose" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="167.0" />
+                        <Label layoutX="41.0" layoutY="230.0" text="MsgCount" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="202.0" />
+                        <Label layoutX="41.0" layoutY="45.0" text="OutputCfgFile" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="27.0" />
+                        <CheckBox layoutX="166.0" layoutY="27.0" mnemonicParsing="false" text="On" />
+                        <CheckBox layoutX="166.0" layoutY="62.0" mnemonicParsing="false" text="On" />
+                        <CheckBox layoutX="166.0" layoutY="97.0" mnemonicParsing="false" text="On" />
+                        <CheckBox layoutX="166.0" layoutY="132.0" mnemonicParsing="false" text="On" AnchorPane.leftAnchor="166.0" />
+                        <TextField layoutX="162.0" layoutY="163.0" prefHeight="25.0" prefWidth="63.0" AnchorPane.leftAnchor="166.0" />
+                        <TextField layoutX="162.0" layoutY="198.0" prefHeight="25.0" prefWidth="63.0" AnchorPane.leftAnchor="166.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Calibrate">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane layoutX="14.0" layoutY="178.0" prefHeight="373.0" prefWidth="478.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <tabs>
+                              <Tab text="1 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Units" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Slope" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Offset" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="2 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Inits" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Slope" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Offset" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="3 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Units" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Slope" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Offset" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="4 Chanell">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Label layoutX="26.0" layoutY="33.0" text="Units" />
+                                          <Label layoutX="171.0" layoutY="33.0" text="Slope" />
+                                          <TextField layoutX="67.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <TextField layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="87.0" />
+                                          <Label layoutX="316.0" layoutY="33.0" text="Offset" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="BinGen">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="478.0">
+                     <children>
+                        <Label layoutX="41.0" layoutY="77.0" text="SamplePeriod" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="62.0" />
+                        <Label layoutX="41.0" layoutY="115.0" text="UseTruePeriod" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="97.0" />
+                        <Label layoutX="41.0" layoutY="150.0" text="MsgCount" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="132.0" />
+                        <Label layoutX="41.0" layoutY="45.0" text="Npts" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="27.0" />
+                        <TextField layoutX="154.0" layoutY="23.0" AnchorPane.leftAnchor="166.0" />
+                        <TextField layoutX="165.0" layoutY="58.0" />
+                        <TextField layoutX="165.0" layoutY="128.0" />
+                        <CheckBox layoutX="165.0" layoutY="97.0" mnemonicParsing="false" text="On" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
