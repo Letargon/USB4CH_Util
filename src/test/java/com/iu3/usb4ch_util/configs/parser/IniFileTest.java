@@ -27,7 +27,7 @@ public class IniFileTest {
     }
 
     /**
-     * Test of writeSRIni method, of class IniFile.
+     * Test of write method, of class IniFile.
      */
 //    @Test
     public void testWriteSRIni() {
@@ -35,7 +35,7 @@ public class IniFileTest {
         SRIniGroup groupData = new SRIniGroup();
         groupData.groupName = "Test";
         groupData.properties.put("property1","value1");
-        file.writeSRIni(groupData);
+        file.write(groupData);
         
         HashSet<SRIniGroup> map = file.read();
         assert(map.contains(groupData));

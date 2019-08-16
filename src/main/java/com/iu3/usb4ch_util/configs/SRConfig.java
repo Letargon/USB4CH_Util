@@ -221,13 +221,24 @@ public class SRConfig {
         }
         return null;
     }
+    static public String getValue(String path, String groupName, String key) {
+
+        HashSet<SRIniGroup> iniGroups = new IniFile(path).read();
+
+        for (SRIniGroup group : iniGroups) {
+            if (group.groupName.equals(groupName)) {
+                return group.properties.get(key);
+            }
+        }
+        return null;
+    }
 
     public final boolean setValue(String groupName, String property, String value) {
         SRIniGroup data = new SRIniGroup();
         data.groupName = groupName;
         data.properties.put(property, value);
 
-        return new IniFile(iniDir).writeSRIni(data);
+        return new IniFile(iniDir).write(data);
     }
 
     public final boolean loadDefaults() {
@@ -235,14 +246,14 @@ public class SRConfig {
         boolean success = true;
 
         for (SRIniGroup group : groups) {
-            success = success && new IniFile(iniDir).writeSRIni(group);
+            success = success && new IniFile(iniDir).write(group);
         }
         return success;
     }
 
     public boolean setGroup(SRIniGroup data) {
 
-        return new IniFile(iniDir).writeSRIni(data);
+        return new IniFile(iniDir).write(data);
     }
 
 }

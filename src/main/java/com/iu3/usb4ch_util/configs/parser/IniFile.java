@@ -63,10 +63,7 @@ public class IniFile {
                         isKey = true;
                     }
                     if (isValue) {
-                        if (key.equals("Title1")) {
-                            int k = 5 + 1;
-                        }
-
+   
                         if (iniData.charAt(0) == '\"') {
                             IsDiscr = true;
                         }
@@ -113,7 +110,7 @@ public class IniFile {
         return null;
     }
 
-    public boolean writeSRIni(SRIniGroup mgroupData) {
+    public boolean write(SRIniGroup mgroupData) {
 
         HashSet<SRIniGroup> groups = read();
         //add group data to ini map
@@ -129,7 +126,7 @@ public class IniFile {
                     old.properties.putAll(mgroupData.properties);
                 }
             }
-        };
+        }
 
         BufferedWriter writer;
         try {
