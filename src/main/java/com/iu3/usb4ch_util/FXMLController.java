@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,6 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -73,22 +78,82 @@ public class FXMLController implements Initializable {
 
             stage.setTitle("Конвертер");
             stage.setScene(scene);
-            
+
             ConverterWinController.PLL = ppLauncher;
             ConverterWinController.CONF = conf;
             ConverterWinController.INIT_DIR = initialDirectory;
-       
+
             ConverterWinController.MAIN_STAGE = stage;
-            
+
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
     private void loadDefaults() {
         conf.loadDefaults();
+    }
+
+    @FXML
+    private void turnGPS() {
+        List<String> choices = new ArrayList<>();
+        choices.add("On");
+        choices.add("Off");
+
+        ChoiceDialog<String> dialog;
+
+        String cur = conf.getValue("Blast", "GpsName").trim();
+        if (cur.equals("\"g1\"")) {
+            dialog = new ChoiceDialog(choices.get(1), choices);
+        } else {
+            dialog = new ChoiceDialog(choices.get(0), choices);
+        }
+
+        dialog.setTitle("Garmin GPS");
+        dialog.setHeaderText("Вкл/Выкл");
+
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            if (result.get().equals("On")) {
+                conf.setValue("Blast", "GpsName", SRConfig.toSRString("g2"));
+            } else {
+                conf.setValue("Blast", "GpsName", SRConfig.toSRString("g1"));
+            }
+        }
+    }
+
+    @FXML
+    private void chooseSamplingRate() {
+        List<String> choices = new ArrayList<>();
+        choices.add("s1 19.531250 Hz");
+        choices.add("s2 32.552083 Hz");
+        choices.add("s3 39.062500 Hz");
+        choices.add("s4 65.104167 Hz");
+        choices.add("s5 78.125000 Hz");
+        choices.add("s6 130.208333 Hz");
+        choices.add("s7 651.041667 Hz");
+        choices.add("s8 1302.083333 Hz");
+        choices.add("s9 2604.166667 Hz");
+        choices.add("s10 4882.812500 Hz");
+        choices.add("s11 9765.625000 Hz");
+
+        String init = "err";
+        String s = conf.getValue("Blast", "SampleRate").trim();
+        
+        int i = Integer.parseInt(s.substring(2, s.length()-1));
+        
+        ChoiceDialog<String> dialog = new ChoiceDialog(choices.get(i - 1), choices);
+        dialog.setTitle("Базовая частота");
+        dialog.setHeaderText("Выберите минимально необходимую частоту: ");
+
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            conf.setValue("Blast", "SampleRate", SRConfig.toSRString(result.get().split("\\s+")[0]));
+        }
+
     }
 
     @FXML
@@ -116,8 +181,8 @@ public class FXMLController implements Initializable {
 
             ppLauncher.setSrDirRoot(selectedDirectory.getAbsolutePath());
 
-            //ppLauncher.setTimeScope();
-            ppLauncher.setTestConfig();
+            ppLauncher.setTimeScope();
+            
             TimeManager tm = new TimeManager(ppLauncher, conf, stationName.textProperty().get());
             new Thread(tm).start();
 

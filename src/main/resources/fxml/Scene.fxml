@@ -19,10 +19,10 @@
                 <Menu mnemonicParsing="false" text="Инструменты">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#openConvertWindow" text="Конвертер" />
-                        <MenuItem mnemonicParsing="false" onAction="#loadDefaults" text="Заводские настройки" />
                         <MenuItem mnemonicParsing="false" onAction="#renameStation" text="Переименовать станцию" />
                         <MenuItem mnemonicParsing="false" onAction="#setDiscr" text="Установить частоту дискретизации" />
-                    <MenuItem mnemonicParsing="false" text="Закрыть" />
+                        <MenuItem mnemonicParsing="false" onAction="#chooseSamplingRate" text="Задать базовую частоту" />
+                        <MenuItem mnemonicParsing="false" onAction="#turnGPS" text="Вкл/Откл GPS" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Помощь">
