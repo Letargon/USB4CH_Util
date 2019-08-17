@@ -14,17 +14,6 @@ import org.junit.Test;
  * @author Andalon
  */
 public class IniFileTest {
-    
-    public IniFileTest() {
-    }
-
-    /**
-     * Test of read method, of class IniFile.
-     */
-    @Test
-    public void testRead() {
-        
-    }
 
     /**
      * Test of write method, of class IniFile.

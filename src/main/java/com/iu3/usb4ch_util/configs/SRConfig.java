@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.iu3.usb4ch_util.configs;
 
 import com.iu3.usb4ch_util.configs.model.SRIniGroup;
@@ -32,6 +27,10 @@ public class SRConfig {
     private SRIniGroup calibrate;
     private SRIniGroup scopeDisplay;
     private SRIniGroup asciiViewFw;
+    private SRIniGroup pakFwrite;
+    private SRIniGroup binFwrite;
+    private SRIniGroup binFread;
+    private SRIniGroup asciiDisplay;
 
     private List<SRIniGroup> groups;
 
@@ -148,18 +147,38 @@ public class SRConfig {
         }
 
         asciiViewFw.properties.put("Plot" + 12, "On");
-
         asciiViewFw.properties.put("Plot" + 13, "On");
-
         asciiViewFw.properties.put("Plot" + 14, "On");
-
         asciiViewFw.properties.put("Plot" + 15, "On");
-
         asciiViewFw.properties.put("Plot" + 16, "On");
-
-    }
-
-    private void loadIniData() {
+        
+        pakFwrite.groupName = "PakFwrite";
+        pakFwrite.properties.put("OutputPrefix", toSRString("raw"));
+        pakFwrite.properties.put("OutputExt", toSRString("pak"));
+        pakFwrite.properties.put("MaxPackets", "0");
+        pakFwrite.properties.put("MsgCount", "0");
+        
+        binFwrite.groupName = "BinFwrite";
+        binFwrite.properties.put("OutputPrefix", toSRString("data"));
+        binFwrite.properties.put("OutputExt", toSRString("bin"));
+        binFwrite.properties.put("MaxBins", "0");
+        binFwrite.properties.put("MsgCount", "0");
+        
+        binFread.groupName = "BinFread";
+        binFread.properties.put("Sequential", "Off");
+        binFread.properties.put("InputPrefix", toSRString("data"));
+        binFread.properties.put("InputExt", toSRString("bin"));
+        binFread.properties.put("FirstSeqNum", "0");
+        binFread.properties.put("UseTruePeriod", "On");
+        binFread.properties.put("WaitUsec", "0");
+        binFread.properties.put("MsgCount", "0");
+        
+        asciiDisplay.groupName = "AsciiDisplay";
+        asciiDisplay.properties.put("OutputChannels", "4");
+        asciiDisplay.properties.put("RepeatTitle", "25");
+        asciiDisplay.properties.put("HexFormat", "Off");
+        asciiDisplay.properties.put("MaxLines", "0");
+        
 
     }
 
@@ -177,7 +196,11 @@ public class SRConfig {
         calibrate = new SRIniGroup();
         scopeDisplay = new SRIniGroup();
         asciiViewFw = new SRIniGroup();
-
+        pakFwrite = new SRIniGroup();
+        binFwrite = new SRIniGroup();
+        binFread = new SRIniGroup();
+        asciiDisplay = new SRIniGroup();
+        
         groups.add(blast);
         groups.add(pak2bin);
         groups.add(interp);
@@ -186,7 +209,11 @@ public class SRConfig {
         groups.add(calibrate);
         groups.add(scopeDisplay);
         groups.add(asciiViewFw);
-
+        groups.add(pakFwrite);
+        groups.add(binFwrite);
+        groups.add(binFread);
+        groups.add(asciiDisplay);
+        
         setDefaults();
         try {
 

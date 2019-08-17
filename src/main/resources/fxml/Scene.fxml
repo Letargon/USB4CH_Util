@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="402.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iu3.usb4ch_util.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="402.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iu3.usb4ch_util.FXMLController">
    <children>
       <BorderPane layoutX="43.0" prefHeight="200.0" prefWidth="185.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -18,6 +18,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Инструменты">
                   <items>
+                        <MenuItem mnemonicParsing="false" onAction="#openConvertWindow" text="Конвертер" />
                         <MenuItem mnemonicParsing="false" onAction="#loadDefaults" text="Заводские настройки" />
                         <MenuItem mnemonicParsing="false" onAction="#renameStation" text="Переименовать станцию" />
                         <MenuItem mnemonicParsing="false" onAction="#setDiscr" text="Установить частоту дискретизации" />

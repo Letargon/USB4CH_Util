@@ -5,6 +5,7 @@
  */
 package com.iu3.usb4ch_util.model;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 /**
@@ -33,7 +34,7 @@ public class FileName {
     }
 
     static public String getTime() {
-        ZonedDateTime zdt = ZonedDateTime.now();
+        ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("UTC"));
 
         String year = Integer.toString(zdt.getYear());
 

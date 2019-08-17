@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.iu3.usb4ch_util.pipeline;
 
 import com.iu3.usb4ch_util.configs.SRConfig;
@@ -32,8 +27,10 @@ public class PipelineLauncher {
     private List<Process> procList;
 
     private String srDir;
+    private String srDirRoot;
 
     private ProcMonitor monitor;
+    private boolean isPipeline;
 
     public PipelineLauncher(String iniFile) {
         procList = new CopyOnWriteArrayList<>();
@@ -42,11 +39,23 @@ public class PipelineLauncher {
         this.iniFile = iniFile;
         iniFileList = new ArrayList<>();
         srDir = new String();
-
+        monitor = new ProcMonitor(this);
     }
 
     public void setSrDir(String srDir) {
         this.srDir = srDir;
+    }
+
+    public String getSrDir(String srDir) {
+        return this.srDir;
+    }
+
+    public String getSrDirRoot() {
+        return srDirRoot;
+    }
+
+    public void setSrDirRoot(String srDirRoot) {
+        this.srDirRoot = srDirRoot;
     }
 
     private void setArgsList(boolean nullEnding) {
@@ -68,12 +77,6 @@ public class PipelineLauncher {
         argsList.add(args);
     }
 
-    private void setArgAlone() {
-        argsList.clear();
-        String args[] = {"\"" + iniFileList.get(0) + "\""};
-        argsList.add(args);
-    }
-
     public void setTimeScope() {
 
         pipeNames.clear(); //clear vector
@@ -88,13 +91,35 @@ public class PipelineLauncher {
         pipeNames.add("Interp.exe");
         iniFileList.add(iniFile);
 
+        pipeNames.add("BinFwrite.exe");
+        iniFileList.add(iniFile);
+
         pipeNames.add("ScopeDisplay.exe");
         iniFileList.add(iniFile);
 
-        pipeNames.add("Bin2Asc.exe");
+        setArgsList(true);
+    }
+
+    public void setMseedConverter() {
+
+        pipeNames.clear();
+        iniFileList.clear();
+
+        pipeNames.add("BinFread.exe");
         iniFileList.add(iniFile);
 
-        setArgsList(true);
+        pipeNames.add("Bin2Seed.exe");
+
+        Bin2SeedCfg cfgFile = new Bin2SeedCfg("Bin2Seed.cfg");
+
+        String stationName = SRConfig.getValue(iniFile, "USB4CH_Util", "StationName");
+        String gpsName = SRConfig.getValue(iniFile, "Blast", "GpsName");
+        
+        cfgFile.writeStandart(stationName, gpsName.equals(" \"g2\""));
+
+        iniFileList.add(System.getProperty("user.dir") + "/Bin2Seed.cfg");
+
+        setArgsList(false);
     }
 
     public void setTestConfig() {
@@ -105,33 +130,39 @@ public class PipelineLauncher {
         pipeNames.add("BinGen.exe");
         iniFileList.add(iniFile);
 
-        pipeNames.add("Bin2Asc.exe");
+        pipeNames.add("BinFwrite.exe");
         iniFileList.add(iniFile);
 
         pipeNames.add("ScopeDisplay.exe");
         iniFileList.add(iniFile);
 
-        pipeNames.add("Bin2Seed.exe");
-
-        Bin2SeedCfg cfgFile = new Bin2SeedCfg("Bin2Seed.cfg");
-
-        String stationName = SRConfig.getValue(iniFile, "USB4CH_Util", "StationName");
-        String gpsName = SRConfig.getValue(iniFile, "Blast", "GpsName");
-        cfgFile.writeStandart(stationName, gpsName.equals("\"g2\""));
-
-        iniFileList.add(System.getProperty("user.dir") + "/Bin2Seed.cfg");
-
-        setArgsList(false);
+        setArgsList(true);
     }
 
-    public void setAsciiViewer() {
+    public void setBinViewer() {
         pipeNames.clear();
         iniFileList.clear();
 
-        pipeNames.add("AsciiViewFw");
+        pipeNames.add("BinFread.exe");
+        iniFileList.add(iniFile);
+        pipeNames.add("ScopeDisplay.exe");
         iniFileList.add(iniFile);
 
-        setArgAlone();
+        setArgsList(true);
+    }
+
+    public void setFw4Converter() {
+        pipeNames.clear();
+        iniFileList.clear();
+
+        pipeNames.add("BinFread.exe");
+        iniFileList.add(iniFile);
+
+        pipeNames.add("Bin2Asc.exe");
+        iniFileList.add(iniFile);
+       
+
+        setArgsList(true);
     }
 
     public void terminate() {
@@ -140,6 +171,7 @@ public class PipelineLauncher {
             p.destroy();
             procList.remove(p);
         }
+        monitor.stop();
     }
 
     public synchronized boolean runPipeLine(boolean pipeline) {
@@ -152,9 +184,9 @@ public class PipelineLauncher {
                 if (!pipeline) {
                     pb = new ProcessBuilder(command, argsList.get(i)[0]);
                 } else {
-                    if (argsList.size() == 3 || i != pipeNames.size() - 1) {
-                        pb = new ProcessBuilder(command, argsList.get(i)[0],
-                                argsList.get(i)[1], argsList.get(i)[2]);
+                    if (argsList.get(i).length == 3) {
+                    pb = new ProcessBuilder(command, argsList.get(i)[0],
+                            argsList.get(i)[1], argsList.get(i)[2]);
                     } else {
                         pb = new ProcessBuilder(command, argsList.get(i)[0]);
                     }
@@ -185,8 +217,12 @@ public class PipelineLauncher {
     }
 
     public void runMonitor() {
-        monitor = new ProcMonitor(this, procList);
+        monitor.setProcList(procList);
         new Thread(monitor).start();
+    }
+
+    public synchronized boolean isAlife() {
+        return !monitor.isErrorMark() || monitor.isRunning();
     }
 
 }

@@ -45,7 +45,7 @@ public class PipelineLauncherTest {
     /**
      * Test of runPipeLine method, of class PipelineLauncher.
      */
-    @Test
+    //@Test
     public void testRunPipeLine() {
         ppl.setTestConfig();
         ppl.runPipeLine(true);

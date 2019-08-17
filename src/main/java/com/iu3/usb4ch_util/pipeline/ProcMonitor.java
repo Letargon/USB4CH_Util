@@ -5,6 +5,7 @@
  */
 package com.iu3.usb4ch_util.pipeline;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,17 +17,18 @@ import java.util.logging.Logger;
 public class ProcMonitor implements Runnable {
 
     private final PipelineLauncher ppLauncher;
-    private final List<Process> procList;
+    private List<Process> procList;
     private volatile boolean running;
     private volatile boolean errorMark = false;
 
 
-    public ProcMonitor(PipelineLauncher ppLauncher, List<Process> procList) {
-        this.procList = procList;
+    public ProcMonitor(PipelineLauncher ppLauncher) {
         this.ppLauncher = ppLauncher;
-
+        this.procList = new ArrayList<>();
     }
-
+    public void setProcList(List<Process> procList){
+        this.procList = procList;
+    }
     @Override
     public void run() {
         running = true;
@@ -35,6 +37,8 @@ public class ProcMonitor implements Runnable {
                 if (!p.isAlive()) {
                     errorMark = true;
                     ppLauncher.terminate();
+                    running = false;
+                    break;
                 }
                 try {
                     Thread.sleep(200);
